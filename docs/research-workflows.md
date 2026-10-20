@@ -1,6 +1,6 @@
 # 科研复现：按阶段组合技能
 
-[返回首页](../README.md) · [Nature 技能详解](nature-skills.md) · [其他技能目录](local-skills-catalog.md)
+[返回首页](../README.md) · [Nature 技能详解](nature-skills.md) · [各技能集目录](local-skills-catalog.md)
 
 下面是一条从零基础开始的使用路线。Skill 帮助组织工作与核对证据，实验设计、模型选择和结果解释仍需要理解。每一步都可以单独完成，无须一次调用整套技能。
 
@@ -93,7 +93,7 @@ src、models、prompts、主程序入口和结果目录的作用。
 
 ### 为什么文件夹名称与调用名称不一样？
 
-以 `SKILL.md` 的名称和当前宿主选择器为准。例如 `nature-proposal-writer` 调用 `researchwrite`；插件技能可能带 `ecc:`、`google-drive:` 等前缀。完整目录已给出当前调用入口。
+以 `SKILL.md` 的名称和当前宿主选择器为准。例如 `nature-proposal-writer` 调用 `researchwrite`；插件技能可能带 `ecc:` 等前缀。完整目录已给出当前调用入口。
 
 ### `$技能名` 没反应怎么办？
 
@@ -101,7 +101,7 @@ src、models、prompts、主程序入口和结果目录的作用。
 
 ### 同一种任务有好几个技能怎么办？
 
-优先选择目标最明确的一个。例如论文汇报选 `nature-paper2ppt`，普通演示文稿选 `presentations:Presentations`；本地表格选 `spreadsheets:Spreadsheets`，已连接的在线表格选 `google-drive:google-sheets`；PDF 文本阅读与页面视觉检查也可以分别选对应能力。不要默认把所有同类流程串联执行。
+优先选择目标最明确的一个。例如论文汇报选 `nature-paper2ppt`，普通演示文稿可选 `anthropic-pptx`；本地表格选 `anthropic-xlsx`；需要明确复现流程的调试时选 `superpowers-systematic-debugging`。不要默认把所有同类流程串联执行。
 
 ### 能在 PyCharm 中使用吗？
 

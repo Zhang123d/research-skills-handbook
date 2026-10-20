@@ -1,10 +1,46 @@
-# Nature Skills：逐项使用说明
+# 第一篇 · Nature Skills：科研工作流
 
-[返回首页](../README.md) · [其他技能完整目录](local-skills-catalog.md) · [科研工作流](research-workflows.md)
+[返回首页](../README.md) · [各技能集总目录](local-skills-catalog.md) · [科研工作流](research-workflows.md)
 
 本页基于已安装版本 `c8599197` 的说明编写，列出 **22 个功能技能 + 1 个内部支持包**。下面的示例直接放入 Codex 聊天框；示例中的文件名、方向和输出目录需要换成自己的材料。提交后，AI 读取对应技能并按实际工具条件执行。示例没有被批量运行，不代表相应外部服务已经配置。
 
+## 本篇目录
+
+- **一、检索、下载与引用**
+  - [nature-academic-search：跨来源文献检索](#nature-academic-search)
+  - [nature-downloader：获取授权范围内的全文](#nature-downloader)
+  - [nature-citation：为论断寻找 Nature/CNS 范围的支撑文献](#nature-citation)
+  - [nature-ref-verifier：核查参考文献](#nature-ref-verifier)
+  - [nature-literature-pipeline：连续文献发现与归档](#nature-literature-pipeline)
+- **二、阅读、翻译与研究理解**
+  - [nature-paper-xray：讲透一篇论文](#nature-paper-xray)
+  - [nature-paper-card：结构化精读卡](#nature-paper-card)
+  - [nature-reader：中英对照阅读材料](#nature-reader)
+  - [nature-paper-trans：图片型中文 PDF](#nature-paper-trans)
+  - [nature-social-science：研究选题与论证自检](#nature-social-science)
+- **三、实验记录、统计与绘图**
+  - [nature-experiment-log：实验记录整理](#nature-experiment-log)
+  - [nature-statistics：统计报告与设计审查](#nature-statistics)
+  - [nature-figure：论文图与可编辑示意图](#nature-figure)
+- **四、汇报、幻灯片与材料转换**
+  - [nature-paper2ppt：论文转组会汇报](#nature-paper2ppt)
+  - [nature-image2ppt：截图重建可编辑 PPT](#nature-image2ppt)
+- **五、写作、开题与投稿**
+  - [nature-writing：根据证据起草论文](#nature-writing)
+  - [nature-polishing：修改已有文字](#nature-polishing)
+  - [researchwrite：开题报告与研究计划](#researchwrite)
+  - [nature-data：数据与代码可用性](#nature-data)
+  - [nature-reviewer：模拟审稿](#nature-reviewer)
+  - [nature-response：回复审稿意见](#nature-response)
+  - [nature-paper-to-patent：技术交底与专利草稿](#nature-paper-to-patent)
+- **六、共享支持包**
+  - [nature-shared：其他技能调用的公共资料](#nature-shared)
+
+---
+
 ## 一、检索、下载与引用
+
+<a id="nature-academic-search"></a>
 
 ### 1. nature-academic-search：跨来源文献检索
 
@@ -20,6 +56,8 @@
 
 **依赖与边界：** 在线检索需要可用网络或相应检索工具；专用 MCP、PubMed 联系邮箱或出版商密钥按来源按需配置，不是全部必需。查到标题不等于读过全文；只读摘要时应明确标注。
 
+<a id="nature-downloader"></a>
+
 ### 2. nature-downloader：获取授权范围内的全文
 
 **用途：** 根据 DOI、标题或链接获取论文正文及可选 Supporting Information（SI，补充材料），选择开放获取、出版商 API 或用户已有机构访问途径。
@@ -33,6 +71,8 @@ DOI 列表：……
 ```
 
 **依赖与边界：** 技能声明需要 Node.js 22+ 与 Python 3；机构访问等浏览器路线还需要用户已登录的 Chrome 会话及相应控制能力。出版商 API 是按需选项，密钥不等于每篇文章都有全文权限。不能把登录网页或 CAJ 改扩展名冒充 PDF；不会因为安装技能而自动开通知网权限。
+
+<a id="nature-citation"></a>
 
 ### 3. nature-citation：为论断寻找 Nature/CNS 范围的支撑文献
 
@@ -48,6 +88,8 @@ DOI 列表：……
 
 **依赖与边界：** 需要在线查证。计算机方向如果关注 ACL、ICLR、NeurIPS、CCS、NDSS 等会议，通常先用 `nature-academic-search`，避免被 Nature/CNS 范围限制。
 
+<a id="nature-ref-verifier"></a>
+
 ### 4. nature-ref-verifier：核查参考文献
 
 **用途：** 检查 DOI 是否指向正确文献，逐字段核对标题、作者及顺序、年份、卷期和页码，定位拼接、错引和版本差异。
@@ -61,6 +103,8 @@ DOI 列表：……
 ```
 
 **依赖与边界：** 依赖可访问的 Crossref、出版商等来源；单个来源查不到不能直接判为伪造。同步改 Zotero 还需要对应连接与写入授权；单纯核查不要求配置 Zotero。
+
+<a id="nature-literature-pipeline"></a>
 
 ### 5. nature-literature-pipeline：连续文献发现与归档
 
@@ -79,6 +123,8 @@ DOI 列表：……
 
 ## 二、阅读、翻译与研究理解
 
+<a id="nature-paper-xray"></a>
+
 ### 6. nature-paper-xray：讲透一篇论文
 
 **用途：** 重建论文问题、方法动机、关键设计和证据边界，并用具体数字讲清重要公式。适合“看过摘要，但不明白为什么这样设计”。
@@ -94,6 +140,8 @@ DOI 列表：……
 
 **依赖与边界：** 以可读论文为基础，扫描版可能需要 OCR。它侧重理解，不默认做文献检索、全文翻译或给出录用评价。
 
+<a id="nature-paper-card"></a>
+
 ### 7. nature-paper-card：结构化精读卡
 
 **用途：** 将一篇论文整理成方便积累和比较的研究卡，重点记录方法、实验如何支撑主张、局限和后续研究想法。
@@ -107,6 +155,8 @@ DOI 列表：……
 ```
 
 **依赖与边界：** PDF/源映射输入使用随包的准备脚本，相关 PDF 解析依赖需可用。只有摘要时应交付明确受限的卡片，不能补写未读的实验；与 `paper-xray` 相比更强调固定结构与长期积累。
+
+<a id="nature-reader"></a>
 
 ### 8. nature-reader：中英对照阅读材料
 
@@ -122,6 +172,8 @@ DOI 列表：……
 
 **依赖与边界：** PDF 提取、扫描识别或在线获取按输入类型需要工具。优先选择它来做可检索、可引用的文本对照；不要将它等同于逐页保留原版式的中文 PDF。
 
+<a id="nature-paper-trans"></a>
+
 ### 9. nature-paper-trans：图片型中文 PDF
 
 **用途：** 把英文 PDF 的指定页或全文逐页翻译成简体中文页面，尽量保留原来的分栏、图表、公式和版面关系，最终合成图片型 PDF。
@@ -135,6 +187,8 @@ DOI 列表：……
 ```
 
 **依赖与边界：** 此安装版本明确使用**内置 image_gen 生图工具**，并需要 Python 3.9+、PyMuPDF 和 Pillow。它不是现有 Zotero PDF2zh/DeepSeek 翻译接口。每页每轮只有一次生图机会，无自动重试；公式、数字和译文需对照原文。先试少量页面更便于判断是否符合阅读需求。
+
+<a id="nature-social-science"></a>
 
 ### 10. nature-social-science：研究选题与论证自检
 
@@ -152,6 +206,8 @@ DOI 列表：……
 
 ## 三、实验记录、统计与绘图
 
+<a id="nature-experiment-log"></a>
+
 ### 11. nature-experiment-log：实验记录整理
 
 **用途：** 将本地日志、图片、文字和可处理的语音材料整理成有元数据的 Markdown 实验记录，保存原始材料关联和异常信息。
@@ -167,6 +223,8 @@ DOI 列表：……
 
 **依赖与边界：** 核心本地流程不要求飞书或 Obsidian；语音需有可用转录能力。它整理事实，不应将 API 失败写成模型拒答或将未运行实验写成完成。
 
+<a id="nature-statistics"></a>
+
 ### 12. nature-statistics：统计报告与设计审查
 
 **用途：** 检查独立实验单位、样本数、重复、误差条、置信区间、检验、多重比较和正文/图注是否一致。
@@ -180,6 +238,8 @@ DOI 列表：……
 ```
 
 **依赖与边界：** 文字审查不必先安装统计软件；实际计算需数据和相应 Python/R 环境。它主要解决统计报告是否可信、清楚，不能脱离实验设计随便指定一个检验。
+
+<a id="nature-figure"></a>
 
 ### 13. nature-figure：论文图与可编辑示意图
 
@@ -198,6 +258,8 @@ DOI 列表：……
 
 ## 四、汇报、幻灯片与材料转换
 
+<a id="nature-paper2ppt"></a>
+
 ### 14. nature-paper2ppt：论文转组会汇报
 
 **用途：** 根据论文或阅读笔记制作中文学术 PPTX，包括叙事、原文图表、来源和演讲备注；也可修改现有汇报。
@@ -211,6 +273,8 @@ DOI 列表：……
 ```
 
 **依赖与边界：** 需要可用 PPTX 生成与渲染工具链，随包有质量审查脚本。不能仅因源论文结果看起来完整就编造演讲中的新实验。
+
+<a id="nature-image2ppt"></a>
 
 ### 15. nature-image2ppt：截图重建可编辑 PPT
 
@@ -228,6 +292,8 @@ DOI 列表：……
 
 ## 五、写作、开题与投稿
 
+<a id="nature-writing"></a>
+
 ### 16. nature-writing：根据证据起草论文
 
 **用途：** 起草或重构科学论文的论证和章节，以及首次投稿相关材料。适合需要组织研究故事、串联证据的写作。
@@ -241,6 +307,8 @@ DOI 列表：……
 ```
 
 **依赖与边界：** 普通文本起草不必先配置专用 API；查证、LaTeX 编译、文档导出另需对应工具。目标为其他期刊/会议时明确其要求，不机械套用 Nature 格式。
+
+<a id="nature-polishing"></a>
 
 ### 17. nature-polishing：修改已有文字
 
@@ -256,6 +324,8 @@ DOI 列表：……
 
 **依赖与边界：** 纯语言修改只需原文；编译时才需要相应工具。需要从头起草或重构核心论证时应使用 `nature-writing`。
 
+<a id="researchwrite"></a>
+
 ### 18. researchwrite：开题报告与研究计划
 
 **名称提醒：** 安装文件夹叫 `nature-proposal-writer`，但 `SKILL.md` 中的实际技能名是 **`researchwrite`**。调用时优先写 `$researchwrite`。
@@ -269,6 +339,8 @@ DOI 列表：……
 ```
 
 **依赖与边界：** 文献验证、DOCX 导出等按实际任务需要工具；不保证新颖性、资助或通过开题。其高级审查模式涉及独立评估，不应将同一上下文中的多段文字称为独立审查。
+
+<a id="nature-data"></a>
 
 ### 19. nature-data：数据与代码可用性
 
@@ -284,6 +356,8 @@ DOI 列表：……
 
 **依赖与边界：** 起草不等于已经上传数据、创建 DOI 或开放代码；不会处理一般的数据清洗。真实上传、发布和访问控制是另外的操作。
 
+<a id="nature-reviewer"></a>
+
 ### 20. nature-reviewer：模拟审稿
 
 **用途：** 从审稿角度检查稿件的贡献、证据和技术有效性，给出有位置依据的主要与次要问题。
@@ -298,6 +372,8 @@ DOI 列表：……
 
 **依赖与边界：** 完整多报告模式需要真正隔离的上下文/调用能力，不能把同一上下文的角色扮演称为独立盲审；没有该能力应明确限制。它不是期刊正式审稿或录用保证。
 
+<a id="nature-response"></a>
+
 ### 21. nature-response：回复审稿意见
 
 **用途：** 逐条拆解审稿意见，组织修改行动、回复信、返修 cover letter 及稿件修改记录。
@@ -311,6 +387,8 @@ DOI 列表：……
 ```
 
 **依赖与边界：** 只写回复需要文本材料；制作 LaTeX/标记稿返修包还需编译与一致性检查。改动正文后，应重新核对回复中的引文、页码和行号。
+
+<a id="nature-paper-to-patent"></a>
 
 ### 22. nature-paper-to-patent：技术交底与专利草稿
 
@@ -327,6 +405,8 @@ DOI 列表：……
 **依赖与边界：** PDF 解析、DOCX 生成、现有技术检索按所选路线需要相应依赖；安装包内有不同路线的 requirements。材料整理和草拟不能替代正式权属、公开时间及专利性判断。
 
 ## 六、共享支持包
+
+<a id="nature-shared"></a>
 
 ### nature-shared：其他技能调用的公共资料
 
